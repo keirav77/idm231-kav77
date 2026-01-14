@@ -1,0 +1,4 @@
+readme.md
+1. Theme ideas 
+        1. Your wawa sandwhich based off of birthday, I wanted to choose this because I love wawa sandwhiches. I want to create a vibrant and artistic land inspired by hoagiefest. I will have all the hoagies layed out and hten
+        2. The next is your eagles player acroding to your birthday. I chose this because I'm a big eagles fan and I want to be able to match their personalities with eagles players. The theme for that will be the classic vintage kelly green. I would represent the zodiac by showing the actual players then having the sign pop up once you click on it.
