@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Week 05: DOM - Follow Along</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+      line-height: 1.6;
+      padding: 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+      background: #f5f5f5;
+    }
+
+    header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 2rem;
+      border-radius: 12px;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      margin-bottom: 0.5rem;
+    }
+
+    .subtitle {
+      opacity: 0.9;
+      font-size: 1.1rem;
+    }
+
+    section {
+      background: white;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      color: #667eea;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid #f0f0f0;
+    }
+
+    button {
+      background: #667eea;
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin: 0.5rem 0.5rem 0.5rem 0;
+    }
+
+    button:hover {
+      background: #5568d3;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(102, 126, 234, 0.3);
+    }
+
+    .demo-box {
+      background: #f8f9fa;
+      border: 2px solid #dee2e6;
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin: 1rem 0;
+      font-size: 1.1rem;
+    }
+
+    .output {
+      background: #1e1e1e;
+      color: #00ff00;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0;
+      font-family: 'Courier New', monospace;
+      min-height: 60px;
+      line-height: 1.8;
+    }
+
+    .instruction {
+      background: #fff3cd;
+      border-left: 4px solid #ffc107;
+      padding: 1rem;
+      margin: 1rem 0;
+      border-radius: 4px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      background: #f8f9fa;
+      padding: 0.75rem;
+      margin: 0.5rem 0;
+      border-radius: 8px;
+      border-left: 4px solid #667eea;
+      transition: all 0.3s ease;
+    }
+
+    .highlight {
+      background: #fff3cd !important;
+      border-left-color: #ffc107 !important;
+      font-weight: bold;
+    }
+
+    .task {
+      cursor: pointer;
+    }
+
+    .task:hover {
+      background: #e9ecef;
+      transform: translateX(5px);
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 0.75rem;
+      border: 2px solid #dee2e6;
+      border-radius: 8px;
+      font-size: 1rem;
+      margin: 0.5rem 0;
+    }
+
+    input:focus {
+      outline: none;
+      border-color: #667eea;
+    }
+
+    code {
+      background: #f8f9fa;
+      padding: 0.2rem 0.4rem;
+      border-radius: 4px;
+      font-family: 'Courier New', monospace;
+      color: #e83e8c;
+    }
+
+    .final-note {
+      background: #d4edda;
+      border-left: 4px solid #28a745;
+      padding: 1.5rem;
+      margin: 2rem 0;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Week 05: Document Object Model (DOM)</h1>
+    <p class="subtitle">Follow along and learn to manipulate the DOM!</p>
+  </header>
+
+  <!-- Example 1: Change Text -->
+  <section>
+    <h2>Example 1: Change Text</h2>
+    <p class="instruction">
+      <strong>Goal:</strong> Select an element and change its text when the button is clicked
+    </p>
+    <div id="demo-box" class="demo-box">
+      Change this text
+    </div>
+    <button id="change-text-btn">Change Text</button>
+    <script>
+        const changeTextBtn = document.getElementById('change-text-btn');
+        const demoBox = document.getElementById('demo-box');
+        const selectOutput = document.getElementById('select-output');
+
+        changeTextBtn.addEventListener('click', () => {
+            demoBox.textContent = 'Text changed!';
+            selectOutput.textContent = 'Console: Text changed!';
+            console.log('✅ Text changed!');
+        });
+        selectOutput.textContent = 'Console: Waiting for button click...';
+   console.log(selectOutput.textContent);
+   </script>
+    <div id="select-output" class="output">Console: Waiting for button click...</div>
+
+  </section>
+
+  <!-- Example 2: Highlight Multiple Items -->
+  <section>
+    <h2>Example 2: Highlight Multiple Items</h2>
+    <p class="instruction">
+      <strong>Goal:</strong> Select ALL fruit items and add a highlight class to all of them at once
+    </p>
+    <ul id="fruit-list">
+      <li class="fruit-item">🍎 Apple</li>
+      <li class="fruit-item">🍌 Banana</li>
+      <li class="fruit-item">🍊 Orange</li>
+      <li class="fruit-item">🍇 Grape</li>
+    </ul>
+    <button id="highlight-btn">Highlight All</button>
+    <script>
+        const highlightBtn = document.getElementById('highlight-btn');
+        const fruitItems = document.querySelectorAll('.fruit-item');
+        const multipleOutput = document.getElementById('multiple-output');
+
+        highlightBtn.addEventListener('click', () => {
+            fruitItems.forEach(item => item.classList.toggle('highlight'));
+            multipleOutput.textContent = 'Console: Toggled highlight on all fruit items!';
+            console.log('✅ Toggled highlight on all fruit items!');
+        });
+        multipleOutput.textContent = 'Console: Waiting for button click...';
+    </script>
+    <div id="multiple-output" class="output">Console: Waiting for action...</div>
+  </section>
+
+  <!-- Example 3: Add New Items -->
+  <section>
+    <h2>Example 3: Add New Items to a List</h2>
+    <p class="instruction">
+      <strong>Goal:</strong> Create a new list item and add it to the shopping list
+    </p>
+    <ul id="shopping-list">
+      <li>🥛 Milk</li>
+      <li>🍞 Bread</li>
+      <li>🥚 Eggs</li>
+    </ul>
+    <input type="text" id="new-item-input" placeholder="Type a new item...">
+    <button id="add-item-btn">Add to List</button>
+    <div id="add-output" class="output">Console: Ready to add items...</div>
+  </section>
+
+  <!-- Example 4: Remove Items -->
+  <section>
+    <h2>Example 4: Remove Items from a List</h2>
+    <p class="instruction">
+      <strong>Goal:</strong> Click on any task to remove it from the list
+    </p>
+    <ul id="task-list">
+      <li class="task">✅ Learn JavaScript basics</li>
+      <li class="task">✅ Understand the DOM</li>
+      <li class="task">✅ Practice selecting elements</li>
+      <li class="task">✅ Build something cool!</li>
+    </ul>
+    <div id="remove-output" class="output">Console: Click any task to remove it...</div>
+  </section>
+
+  <!-- Example 5: Toggle Classes -->
+  <section>
+    <h2>Example 5: Toggle Classes</h2>
+    <p class="instruction">
+      <strong>Goal:</strong> Add or remove a class by clicking the button (toggle means: add if it's not there, remove if it is!)
+    </p>
+    <div class="demo-box">
+      <div id="attribute-box" class="demo-box">
+        
+        👤 User Profile Box
+      </div>
+    </div>
+    <button id="toggle-class-btn">Toggle Highlight</button>
+    <div id="attribute-output" class="output">Console: Ready to toggle classes...</div>
+  </section>
+
+  <!-- Final Instructions -->
+  <section class="final-note">
+    <h2>🎯 You're Ready!</h2>
+    <p>Now open <code>app.js</code> in your code editor and follow along with the instructor.</p>
+    <p style="margin-top: 1rem;">Remember to:</p>
+    <ul style="margin-top: 0.5rem;">
+      <li style="background: none; border: none; padding: 0.25rem;">✅ Save your JavaScript file after making changes</li>
+      <li style="background: none; border: none; padding: 0.25rem;">✅ Refresh your browser to see the updates</li>
+      <li style="background: none; border: none; padding: 0.25rem;">✅ Check the console (F12) if something doesn't work</li>
+      <li style="background: none; border: none; padding: 0.25rem;">✅ Ask questions if you get stuck!</li>
+    </ul>
+  </section>
+
+  <script src="app.js"></script>
+</body>
+</html>
