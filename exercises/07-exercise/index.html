@@ -1,0 +1,215 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Week 07: Audio Exercise</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+      line-height: 1.6;
+      padding: 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+      background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+      min-height: 100vh;
+    }
+
+    .container {
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+    }
+
+    header {
+      background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+      color: white;
+      padding: 2rem;
+      border-radius: 12px;
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      margin-bottom: 0.5rem;
+    }
+
+    .subtitle {
+      opacity: 0.9;
+      font-size: 1.1rem;
+    }
+
+    section {
+      background: #f8f9fa;
+      padding: 2rem;
+      margin: 2rem 0;
+      border-radius: 12px;
+      border-left: 4px solid #f5576c;
+    }
+
+    h2 {
+      color: #f5576c;
+      margin-bottom: 1rem;
+    }
+
+    button {
+      background: #f5576c;
+      color: white;
+      border: none;
+      padding: 1rem 2rem;
+      font-size: 1.1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin: 0.5rem;
+    }
+
+    button:hover {
+      background: #e04560;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(245, 87, 108, 0.3);
+    }
+
+    .sound-button {
+      min-width: 180px;
+      font-size: 1.5rem;
+    }
+
+    .button-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+
+    .status {
+      background: #1e1e1e;
+      color: #00ff00;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0;
+      font-family: 'Courier New', monospace;
+      min-height: 40px;
+    }
+
+    code {
+      background: #f8f9fa;
+      padding: 0.2rem 0.4rem;
+      border-radius: 4px;
+      font-family: 'Courier New', monospace;
+      color: #e83e8c;
+    }
+
+    .instruction {
+      background: #fff3cd;
+      border-left: 4px solid #ffc107;
+      padding: 1rem;
+      margin: 1rem 0;
+      border-radius: 4px;
+    }
+
+    #volume-slider {
+      width: 100%;
+      margin: 1rem 0;
+    }
+
+    #volume-display {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #f5576c;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Week 07: Audio Exercise</h1>
+      <p class="subtitle">Complete 2 audio challenges on your own</p>
+    </header>
+
+    <!-- Problem 1 -->
+    <section>
+      <h2>Problem 1: Sound Effect on Hover</h2>
+      <p class="instruction">
+        <strong>Challenge:</strong> Play a sound when the user hovers over the button (not clicks!)
+      </p>
+      <p>Hover over this button to trigger a sound:</p>
+      <button id="hover-btn" class="sound-button">🎯 Hover Over Me</button>
+      <div id="hover-status" class="status">Hover status will appear here...</div>
+      
+      <details style="background: #fef3c7; border-left: 4px solid #f59e0b; padding: 1rem; margin: 1rem 0; border-radius: 4px;">
+        <summary style="cursor: pointer; font-weight: 600; color: #92400e;">💡 Hint #1: Creating the Audio</summary>
+        <p>Create an Audio object: <code>const hoverSound = new Audio('sounds/hover.mp3');</code></p>
+      </details>
+      
+      <details style="background: #fef3c7; border-left: 4px solid #f59e0b; padding: 1rem; margin: 1rem 0; border-radius: 4px;">
+        <summary style="cursor: pointer; font-weight: 600; color: #92400e;">💡 Hint #2: Finding Elements</summary>
+        <p>Select the button: <code>const hoverBtn = document.querySelector('#hover-btn');</code></p>
+        <p>Select the status: <code>const hoverStatus = document.querySelector('#hover-status');</code></p>
+      </details>
+      
+      <details style="background: #fef3c7; border-left: 4px solid #f59e0b; padding: 1rem; margin: 1rem 0; border-radius: 4px;">
+        <summary style="cursor: pointer; font-weight: 600; color: #92400e;">💡 Hint #3: The Event</summary>
+        <p>Use <code>'mouseenter'</code> event (not 'click'!)</p>
+        <p>Play sound and update text when hovering</p>
+      </details>
+    </section>
+
+    <!-- Problem 2 -->
+    <section>
+      <h2>Problem 2: Volume Control</h2>
+      <p class="instruction">
+        <strong>Challenge:</strong> Control audio volume with a slider and show the volume percentage
+      </p>
+      <button id="volume-play-btn" class="sound-button">🔊 Play with Volume</button>
+      
+      <div style="margin: 2rem 0;">
+        <label for="volume-slider">Volume:</label>
+        <input type="range" id="volume-slider" min="0" max="100" value="50">
+        <p id="volume-display">Volume: 50%</p>
+      </div>
+
+      <div id="volume-status" class="status">Volume control status...</div>
+      
+      <details style="background: #fef3c7; border-left: 4px solid #f59e0b; padding: 1rem; margin: 1rem 0; border-radius: 4px;">
+        <summary style="cursor: pointer; font-weight: 600; color: #92400e;">💡 Hint #1: Audio Setup</summary>
+        <p>Create Audio object: <code>const volumeAudio = new Audio('sounds/music.mp3');</code></p>
+        <p>Find all elements: button, slider, display, status</p>
+      </details>
+      
+      <details style="background: #fef3c7; border-left: 4px solid #f59e0b; padding: 1rem; margin: 1rem 0; border-radius: 4px;">
+        <summary style="cursor: pointer; font-weight: 600; color: #92400e;">💡 Hint #2: Playing Sound</summary>
+        <p>Add click listener to button: <code>volumePlayBtn.addEventListener('click', () => { volumeAudio.play(); });</code></p>
+      </details>
+      
+      <details style="background: #fef3c7; border-left: 4px solid #f59e0b; padding: 1rem; margin: 1rem 0; border-radius: 4px;">
+        <summary style="cursor: pointer; font-weight: 600; color: #92400e;">💡 Hint #3: Volume Control</summary>
+        <p>Slider values are 0-100, but audio.volume needs 0-1</p>
+        <p>Divide by 100: <code>volumeAudio.volume = volumeSlider.value / 100;</code></p>
+        <p>Use <code>'input'</code> event on slider to update in real-time</p>
+      </details>
+    </section>
+
+    <!-- Instructions -->
+    <section style="background: #d4edda; border-left-color: #28a745;">
+      <h2>📝 Instructions</h2>
+      <p><strong>What to do:</strong></p>
+      <ol>
+        <li>Open <code>scripts/app.js</code> in your code editor</li>
+        <li>Complete Problem 1 and Problem 2</li>
+        <li>Test in your browser</li>
+        <li>Push to GitHub and verify on Vercel</li>
+        <li>Submit your Vercel link to Blackboard</li>
+      </ol>
+      <p style="margin-top: 1rem;"><strong>Need help?</strong> Check the hints in <code>app.js</code></p>
+    </section>
+  </div>
+
+  <script src="scripts/app.js"></script>
+</body>
+</html>
