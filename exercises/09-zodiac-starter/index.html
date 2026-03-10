@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Week 09: Zodiac Starter</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+      line-height: 1.6;
+      padding: 2rem;
+      max-width: 860px;
+      margin: 0 auto;
+      background: linear-gradient(135deg, #2c3e50 0%, #4a1a6e 100%);
+      min-height: 100vh;
+    }
+
+    .container {
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+    }
+
+    header {
+      background: linear-gradient(135deg, #2c3e50 0%, #4a1a6e 100%);
+      color: white;
+      padding: 2rem;
+      border-radius: 12px;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2rem;
+      margin-bottom: 0.25rem;
+    }
+
+    header p {
+      opacity: 0.8;
+      font-size: 0.95rem;
+    }
+
+    /* ── Problem sections ── */
+    .problem {
+      background: #f8f9fa;
+      border-left: 4px solid #4a1a6e;
+      border-radius: 10px;
+      padding: 1.75rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .problem-label {
+      display: inline-block;
+      background: #4a1a6e;
+      color: white;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+      margin-bottom: 0.5rem;
+    }
+
+    .problem h2 {
+      font-size: 1.3rem;
+      color: #4a1a6e;
+      margin-bottom: 0.4rem;
+    }
+
+    .problem > p {
+      color: #718096;
+      font-size: 0.9rem;
+      margin-bottom: 1.25rem;
+    }
+
+    /* ── Forms ── */
+    form {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    label {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: #4a5568;
+    }
+
+    input[type="date"] {
+      padding: 0.5rem 0.75rem;
+      border: 2px solid #e2e8f0;
+      border-radius: 6px;
+      font-size: 1rem;
+      flex: 1;
+      min-width: 160px;
+    }
+
+    input[type="date"]:focus {
+      outline: none;
+      border-color: #4a1a6e;
+    }
+
+    button {
+      padding: 0.5rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: opacity 0.15s;
+      background: linear-gradient(135deg, #2c3e50 0%, #4a1a6e 100%);
+      color: white;
+    }
+
+    button:hover { opacity: 0.85; }
+
+    /* ── Output / badges ── */
+    .output {
+      background: white;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      padding: 0.75rem 1rem;
+      font-size: 1rem;
+      color: #2d3748;
+      min-height: 2.5rem;
+    }
+
+    .output:empty::before {
+      content: 'Result will appear here…';
+      color: #a0aec0;
+      font-style: italic;
+    }
+
+    .badge {
+      display: none;
+      border-radius: 6px;
+      padding: 0.5rem 1rem;
+      font-size: 0.875rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .badge-green {
+      background: #c6f6d5;
+      border: 1px solid #9ae6b4;
+      color: #276749;
+    }
+
+    .badge-blue {
+      background: #bee3f8;
+      border: 1px solid #90cdf4;
+      color: #2a4a6b;
+    }
+
+    /* ── Hints (match week 08 pattern) ── */
+    details {
+      background: #fef3c7;
+      border-left: 4px solid #f59e0b;
+      padding: 1rem;
+      margin: 0.75rem 0;
+      border-radius: 4px;
+    }
+
+    details summary {
+      cursor: pointer;
+      font-weight: 600;
+      color: #92400e;
+    }
+
+    details p {
+      margin-top: 0.5rem;
+      color: #78350f !important;
+      font-size: 0.9rem !important;
+    }
+
+    details code {
+      background: rgba(0,0,0,0.07);
+      padding: 0.15rem 0.4rem;
+      border-radius: 4px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.85rem;
+    }
+
+    /* ── Setup & Instructions blocks ── */
+    .setup {
+      background: #ebf8ff;
+      border-left: 4px solid #3182ce;
+      border-radius: 10px;
+      padding: 1.75rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .setup h2 {
+      color: #2b6cb0;
+      margin-bottom: 0.75rem;
+    }
+
+    .setup ol, .setup ul {
+      padding-left: 1.25rem;
+    }
+
+    .setup li {
+      margin-bottom: 0.5rem;
+      font-size: 0.95rem;
+    }
+
+    .setup code {
+      background: rgba(49,130,206,0.1);
+      padding: 0.15rem 0.4rem;
+      border-radius: 4px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.85rem;
+      color: #2b6cb0;
+    }
+
+    .setup pre {
+      background: #1e1e2e;
+      color: #cdd6f4;
+      padding: 1rem;
+      border-radius: 6px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.85rem;
+      margin: 0.75rem 0;
+      line-height: 1.6;
+    }
+
+    .instructions {
+      background: #e9d8fd;
+      border-left: 4px solid #6b21a8;
+      border-radius: 10px;
+      padding: 1.75rem;
+      margin-top: 1.5rem;
+    }
+
+    .instructions h2 {
+      color: #6b21a8;
+      margin-bottom: 0.75rem;
+    }
+
+    .instructions ol {
+      padding-left: 1.25rem;
+    }
+
+    .instructions li {
+      margin-bottom: 0.4rem;
+      font-size: 0.95rem;
+    }
+
+    .instructions code {
+      background: rgba(107,33,168,0.1);
+      padding: 0.15rem 0.4rem;
+      border-radius: 4px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.85rem;
+      color: #6b21a8;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <header>
+      <h1>⭐ Zodiac Finder</h1>
+      <p>Week 09 Exercise — Complete all three problems</p>
+    </header>
+
+    <!-- =====================================================
+         Setup Instructions
+    ====================================================== -->
+    <section class="setup">
+      <h2>🛠️ Setup</h2>
+      <ol>
+        <li>
+          <strong>Create the folder structure</strong> inside your <code>exercises/</code> directory:
+          <pre>exercises/
+  └── 09-zodiac-starter/
+      ├── index.html
+      └── scripts/
+          └── app.js</pre>
+        </li>
+        <li>
+          <strong>Create <code>index.html</code></strong> — copy the full HTML source from the course repository into this file.<br>
+          <em>Tip: in the repo, open <code>index.html</code>, click the Raw button, then select all and copy.</em>
+        </li>
+        <li>
+          <strong>Create <code>scripts/app.js</code></strong> — copy the starter <code>app.js</code> from the course repository the same way.
+        </li>
+        <li>
+          <strong>Open <code>index.html</code> in your browser</strong> and open <code>scripts/app.js</code> in your code editor — you should see this page load with no errors in the console.
+        </li>
+        <li>
+          <strong>Open DevTools</strong> (F12 or right-click → Inspect) → <strong>Application → Local Storage</strong> so you can watch data save in real time as you work through the problems.
+        </li>
+      </ol>
+    </section>
+
+    <!-- =====================================================
+         Problem 1: Remember the Birthday with localStorage
+    ====================================================== -->
+    <section class="problem">
+      <span class="problem-label">Problem 1</span>
+      <h2>Remember the Birthday</h2>
+      <p>Enter a birthday, find the zodiac sign, and save the birthday to <code>localStorage</code> so it pre-fills the next time the page loads.</p>
+
+      <div id="storage-badge" class="badge badge-green">✅ Loaded your saved birthday!</div>
+
+      <form id="remember-form">
+        <label for="birthday2">Birthday:</label>
+        <input type="date" id="birthday2" required>
+        <button type="submit">Get My Sign</button>
+      </form>
+
+      <div class="output" id="remember-output"></div>
+
+      <details>
+        <summary>💡 Hint #1 — Selecting elements</summary>
+        <p>Select the form, input, output, and badge at the top of your script:</p>
+        <p><code>const rememberForm = document.querySelector('#remember-form');</code></p>
+        <p><code>const birthday2Input = document.querySelector('#birthday2');</code></p>
+        <p><code>const rememberOutput = document.querySelector('#remember-output');</code></p>
+        <p><code>const storageBadge = document.querySelector('#storage-badge');</code></p>
+      </details>
+
+      <details>
+        <summary>💡 Hint #2 — Parsing the date &amp; getting the sign</summary>
+        <p>The input's value is a string like <code>"1995-07-14"</code>. Convert it and pull out month + day:</p>
+        <p><code>const date = new Date(dateValue);</code></p>
+        <p><code>const month = date.getMonth() + 1; // getMonth() starts at 0!</code></p>
+        <p><code>const day = date.getDate();</code></p>
+        <p>Then call the helper: <code>const sign = getZodiacSign(month, day);</code></p>
+      </details>
+
+      <details>
+        <summary>💡 Hint #3 — Saving to localStorage on submit</summary>
+        <p>Inside your submit handler, after you get the date value, save it:</p>
+        <p><code>localStorage.setItem('savedBirthday', dateValue);</code></p>
+        <p>Use the raw string value from the input — <em>not</em> a Date object.</p>
+      </details>
+
+      <details>
+        <summary>💡 Hint #4 — Loading on page open</summary>
+        <p>Outside (above) your event listener, check if a value was saved:</p>
+        <p><code>const saved = localStorage.getItem('savedBirthday');</code></p>
+        <p><code>if (saved) {</code></p>
+        <p><code>&nbsp;&nbsp;birthday2Input.value = saved;</code></p>
+        <p><code>&nbsp;&nbsp;storageBadge.style.display = 'block';</code></p>
+        <p><code>}</code></p>
+        <p>To test: submit a birthday, then refresh — the input should pre-fill and the green badge should appear.</p>
+      </details>
+    </section>
+
+    <!-- =====================================================
+         Problem 2: setTimeout — Auto-dismiss Notification
+    ====================================================== -->
+    <section class="problem">
+      <span class="problem-label">Problem 2</span>
+      <h2>Delayed Alert with setTimeout</h2>
+      <p>Enter a birthday and hit the button. Use <code>setTimeout</code> to pop up a browser <code>alert()</code> showing the zodiac sign after <strong>5 seconds</strong>.</p>
+
+      <form id="timer-form">
+        <label for="birthday3">Birthday:</label>
+        <input type="date" id="birthday3" required>
+        <button type="submit">Get My Sign</button>
+      </form>
+
+      <details>
+        <summary>💡 Hint #1 — Get the sign first</summary>
+        <p>Parse the date value and call the helper to get the sign — same as Problem 3:</p>
+        <p><code>const date = new Date(birthday3Input.value);</code></p>
+        <p><code>const month = date.getMonth() + 1;</code></p>
+        <p><code>const day = date.getDate();</code></p>
+        <p><code>const sign = getZodiacSign(month, day);</code></p>
+      </details>
+
+      <details>
+        <summary>💡 Hint #2 — Using setTimeout</summary>
+        <p><code>setTimeout</code> runs a function after a delay (milliseconds). Put your <code>alert()</code> inside it:</p>
+        <p><code>setTimeout(() => {</code></p>
+        <p><code>&nbsp;&nbsp;alert(`Your sign is ${sign}!`);</code></p>
+        <p><code>}, 5000); // 5000ms = 5 seconds</code></p>
+      </details>
+
+      <details>
+        <summary>💡 Hint #3 — Cancelling with clearTimeout</summary>
+        <p>If the user submits again before the 5 seconds are up, cancel the old timer so two alerts don't fire:</p>
+        <p><code>let signTimer; // declared outside the event listener</code></p>
+        <p><code>clearTimeout(signTimer); // cancel any running timer</code></p>
+        <p><code>signTimer = setTimeout(() => { alert(...); }, 5000);</code></p>
+      </details>
+    </section>
+
+    <!-- =====================================================
+         Problem 3: Find the Zodiac Sign
+    ====================================================== -->
+    <section class="problem">
+      <span class="problem-label">Problem 3</span>
+      <h2>Find Your Zodiac Sign</h2>
+      <p>Enter a birthday and click the button to see the zodiac sign. The formula is already written for you — just hook it up!</p>
+
+      <form id="zodiac-form">
+        <label for="birthday">Birthday:</label>
+        <input type="date" id="birthday" required>
+        <button type="submit">Get My Sign</button>
+      </form>
+
+      <div id="zodiac-success" class="badge badge-green"></div>
+      <div class="output" id="zodiac-output"></div>
+
+      <details>
+        <summary>💡 Hint #1 — Selecting elements</summary>
+        <p>Select the form, the date input, and the output div at the top of your script:</p>
+        <p><code>const zodiacForm = document.querySelector('#zodiac-form');</code></p>
+        <p><code>const birthdayInput = document.querySelector('#birthday');</code></p>
+        <p><code>const zodiacOutput = document.querySelector('#zodiac-output');</code></p>
+      </details>
+
+      <details>
+        <summary>💡 Hint #2 — Listening for submit</summary>
+        <p>Attach a submit listener to the form. The very first line inside must prevent the default page reload:</p>
+        <p><code>zodiacForm.addEventListener('submit', (event) => {</code></p>
+        <p><code>&nbsp;&nbsp;event.preventDefault();</code></p>
+        <p><code>});</code></p>
+      </details>
+
+      <details>
+        <summary>💡 Hint #3 — Parsing the date</summary>
+        <p>The input's value is a string like <code>"1995-07-14"</code>. Convert it and pull out month + day:</p>
+        <p><code>const date = new Date(birthdayInput.value);</code></p>
+        <p><code>const month = date.getMonth() + 1; // getMonth() starts at 0!</code></p>
+        <p><code>const day = date.getDate();</code></p>
+      </details>
+
+      <details>
+        <summary>💡 Hint #4 — Calling the formula &amp; showing the result</summary>
+        <p>The <code>getZodiacSign</code> function is already at the bottom of <code>app.js</code>. Pass it month and day:</p>
+        <p><code>const sign = getZodiacSign(month, day);</code></p>
+        <p>Then display it:</p>
+        <p><code>zodiacOutput.textContent = `Your sign is ${sign}!`;</code></p>
+      </details>
+    </section>
+
+    <!-- =====================================================
+         Instructions
+    ====================================================== -->
+    <section class="instructions">
+      <h2>📝 Instructions</h2>
+      <p><strong>What to do:</strong></p>
+      <ol>
+        <li>Open <code>scripts/app.js</code> in your code editor</li>
+        <li>Complete all three problems</li>
+        <li>Test in your browser — refresh after Problem 1 to confirm the birthday pre-fills</li>
+        <li>Push to GitHub and verify on Vercel</li>
+        <li>Submit your Vercel link to Blackboard</li>
+      </ol>
+      <p style="margin-top: 1rem;"><strong>Need help?</strong> Expand the hints under each problem.</p>
+    </section>
+
+  </div>
+
+  <script src="scripts/app.js"></script>
+</body>
+</html>
