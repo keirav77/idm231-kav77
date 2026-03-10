@@ -25,7 +25,7 @@ body {
     margin: 0;
     padding: 20px;
     width: max-content;
-    background-size: cover;
+  
 }
 nav-bar {
     display: flex;
