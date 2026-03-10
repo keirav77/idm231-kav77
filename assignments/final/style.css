@@ -20,7 +20,7 @@
 }
 body {
     font-family: 'DMSans', sans-serif;
-    background-color: #ffffff;
+    background-image:image("images/eagles-game-courtesy-lincoln-financial-field-2200x1237px.jpg");
     color: #000000;
     margin: 0;
     padding: 20px;
@@ -51,7 +51,7 @@ h1 {
 .background-container {
     background-image: url("images/eagles-game-courtesy-lincoln-financial-field-2200x1237px.jpg");
     background-size: cover;
-    position: relative;
+    position:absolute;
     z-index: 1;
     padding: 50px;
     opacity: 25%;
