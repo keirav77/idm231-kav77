@@ -24,6 +24,8 @@ body {
     color: #000000;
     margin: 0;
     padding: 20px;
+    width: max-content;
+    background-size: cover;
 }
 nav-bar {
     display: flex;
@@ -49,7 +51,6 @@ h1 {
     grid-row: auto;
 }
 .background-container {
-    background-image: url("images/eagles-game-courtesy-lincoln-financial-field-2200x1237px.jpg");
     background-size: cover;
     position:absolute;
     z-index: 1;
