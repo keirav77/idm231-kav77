@@ -1,37 +1,268 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IDM231</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zodiac Sign Application</title>
+
+  <!-- CSS Reset — required for the final project -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css"
+    integrity="sha512-oHDEc8Xed4hiW6CxD7qjbnI+B07vDdX7hEPTvn9pSZO1bcRqHp8mj9pyr+8RVC2GmtEfI2Bi9Ke9Ass0as+zpg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <h1>What Eagles Player you are based off your birthday!</h1>
-    <input type="date" id="birthday" name="birthday">
-<button id="submit">Submit</button>
-    <script src="app.js"></script>
-    <link rel="stylesheet" href="style.css">
-    <h2> Enter your birthday here:</h2>
+  <!--
+    ================================================================
+    FINAL STARTER — Zodiac Sign Application
+    ================================================================
+    This is a STARTING POINT for your final project.
+    It includes all the HTML sections you'll need.
+    You still need to add your own design, styling, and content!
 
-  <p id="zodiacResult" class="zodiac-result"></p>
-</section>
-<img src="images/ajbrown.webp" alt="AJ Brown" class="player-image">
-<img src="images/reedblankenship.jpg.avif" alt="Reed Blankenship" class="player-image"> 
-<img src="images/lanejohnson.jpg.avif" alt="Lane Johnson" class="player-image">
-        <img src="images/licensed-image-2.jpeg" alt="Jalen Carter" class="player-image"> 
-<img src="images/fredjohnson.png.jpeg" alt="Fred Johnson" class="player-image">
-<img src="images/Unknown.jpeg" alt="Darius Cooper" class="player-image">
-<img src="images/images-4.jpeg" alt="Will Shipley" class="player-image">
-<img src="images/landondickerson.jpg.webp" alt="Landon Dickerson" class="player-image">
-<img src="images/Jalen_Hurts_Trophy_Cigar_Eagles_HED-1024x518.webp" alt="Jalen Hurts" class="player-image"> 
-<img src="images/devontasmith.jpg" alt="DeVonta Smith" class="player-image">
-<img src="images/dallas.jpeg" alt="Dallas Goedert" class="player-image">
-<img src="images/saquon.jpeg" alt="Saquon Barkley" class="player-image">
+    HOW TO USE THIS:
+    1. Copy this entire 12-final-starter folder into assignments/final/
+    2. Rename or restyle anything you want
+    3. Open scripts/app.js — all your JavaScript goes there
+    4. Follow the TODO comments in app.js to build each feature
+    ================================================================
+  -->
 
-<div class="background-container">
-  <div class="content">
-    <img src="images/eagles-game-courtesy-lincoln-financial-field-2200x1237px.jpg" alt="Eagles Game" class="background-container">
+  <!-- ============================================ -->
+  <!-- HEADER                                       -->
+  <!-- ============================================ -->
+  <header>
+    <h1>Zodiac Sign Finder</h1>
+    <p>Enter your birthday or click a sign to learn more.</p>
+
+    <!-- Help button — opens the help modal -->
+    <button class="js-help-button">Help</button>
+  </header>
+
+  <main>
+    <!-- ============================================ -->
+    <!-- SECTION 1: Birthday Form                     -->
+    <!-- ============================================ -->
+    <!--
+      REQUIREMENTS:
+      - Name field + birth date input
+      - Both fields must be filled before submit (validation)
+      - On submit: calculate zodiac sign and display result
+      - User can re-enter a new date without reloading
+    -->
+    <section>
+      <h2>Find Your Sign</h2>
+      <form class="js-zodiac-form">
+        <div>
+          <label for="nameInput">Your Name</label>
+          <input id="nameInput" class="js-name-input" type="text" placeholder="Enter your name">
+        </div>
+        <div>
+          <label for="birthdayInput">Your Birthday</label>
+          <!--
+            You can use type="date" (gives a date picker)
+            or use two separate number fields for month and day.
+            type="date" is easier — that's what this starter uses.
+          -->
+          <input id="birthdayInput" class="js-date-input" type="date">
+        </div>
+        <button type="submit">Find My Sign</button>
+      </form>
+
+      <!-- Result area — shown after form submit -->
+      
+    </section>
+
+    <!-- ============================================ -->
+    <!-- SECTION 2: Zodiac Sign Symbols (Clickable)   -->
+    <!-- ============================================ -->
+    <!--
+      REQUIREMENTS:
+      - All 12 signs displayed as clickable symbols/icons
+      - Clicking a sign shows that sign's information
+      - Each sign has a unique visual (image, icon, or graphic)
+
+      Each button has:
+      - .js-sign-button — for JS to select all of them
+      - data-sign="aries" — for JS to know which sign was clicked
+      
+      Replace the emoji text with your own images or icons!
+    -->
+    <section>
+      <h2>Zodiac Signs</h2>
+      <div class="sign-grid">
+        <button class="js-sign-button sign-card" data-sign="aries">
+<img src="assets/images/licensed-image-2.jpeg" alt="Aries player" class="sign-icon"></button>
+      
+<button class="js-sign-button sign-card" data-sign="taurus">
+        <img src="assets/images/lanejohnson.jpg.avif" alt="taurus plauer" class="sign-icon"></button>
+      
+        <button class="js-sign-button sign-card" data-sign="gemini">
+       <img src="assets/images/fredjohnson.png.jpeg" alt="gemini player" class="sign-icon"></button>
+
+        <button class="js-sign-button sign-card" data-sign="cancer">
+       <img src="assets/images/ajbrown.webp" alt="cancerplayer" class="sign-icon"></button>
+       
+       <button class="js-sign-button sign-card" data-sign="leo">
+        <img src="assets/images/Jalen_Hurts_Trophy_Cigar_Eagles_HED-1024x518.webp"alt="Jalen Hurts" class="sign-icon"></button>
+        
+        <button class="js-sign-button sign-card" data-sign="virgo">
+        <img src="assets/images/willshipley.jpg.avif" alt="virgo player" class="sign-icon"></button>
+       
+        <button class="js-sign-button sign-card" data-sign="libra">
+        <img src="assets/images/landondickerson.jpg.webp" alt="libra player" class="sign-icon"></button>
+      
+        <button class="js-sign-button sign-card" data-sign="scorpio">
+       <img src="assets/images/devontasmith.jpg" alt="scorpio player" class="sign-icon"></button>
+      
+       <button class="js-sign-button sign-card" data-sign="sagittarius">
+        <img src="assets/images/Unknown.jpeg" alt="darius cooper" class="sign-icon"></button>
+      
+        <button class="js-sign-button sign-card" data-sign="capricorn">
+        <img src="assets/images/dallas.jpeg" alt="dallas goedert" class="sign-icon"></button>
+       
+        <button class="js-sign-button sign-card" data-sign="aquarius">
+       <img src="assets/images/saquon.jpeg" alt="saquon barkley jumping" class="sign-icon"></button>
+       
+       <button class="js-sign-button sign-card" data-sign="pisces">
+        <img src="assets/images/reedblankenship.jpg.avif" alt="reed blankenship" class="sign-icon"></button>
+      </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- SECTION 3: Sign Detail Area                  -->
+    <!-- ============================================ -->
+    <!--
+      This is where the sign's info appears when clicked.
+      
+      YOU HAVE TWO OPTIONS (pick one):
+
+      OPTION A: Put all 12 content blocks in the HTML (like demos 07 & 08)
+                JS just shows/hides the right one.
+                Simpler, but more HTML to write.
+
+      OPTION B: Use one output area and fill it from a JS object (like demo 09)
+                Less HTML, but more JS.
+
+      This starter includes BOTH so you can see the pattern.
+      DELETE the one you don't want to use.
+    -->
+
+    <!-- OPTION A: Pre-written content blocks (show/hide) -->
+    <div class="js-sign-detail hidden" data-sign-content="aries">
+      <h3>Aries ♈</h3>
+      <p>March 21 – April 19</p>
+      <p>Bold, ambitious, and always ready to dive headfirst into a challenge.</p>
+    </div>
+    <div class="js-sign-detail hidden" data-sign-content="taurus">
+      <h3>Taurus ♉</h3>
+      <p>April 20 – May 20</p>
+      <p>Reliable, patient, and devoted. Enjoys serene environments.</p>
+    </div>
+    <div class="js-sign-detail hidden" data-sign-content="gemini">
+      <h3>Gemini ♊</h3>
+      <p>May 21 – June 21</p>
+      <p>Curious, adaptable, and expressive. Juggles many passions.</p>
+    </div>
+    <div class="js-sign-detail hidden" data-sign-content="cancer">
+      <h3>Cancer ♋</h3>
+      <p>June 22 – July 22</p>
+      <p>Intuitive, sentimental, and fiercely protective of loved ones.</p>
+    </div>
+    <div class="js-sign-detail hidden" data-sign-content="leo">
+      <h3>Leo ♌</h3>
+      <p>July 23 – August 22</p>
+      <p>Creative, passionate, and generous. Loves the spotlight.</p>
+    </div>
+    <div class="js-sign-detail hidden" data-sign-content="virgo">
+      <h3>Virgo ♍</h3>
+      <p>August 23 – September 22</p>
+      <p>Analytical, practical, and hardworking with attention to detail.</p>
+    </div>
+    <div class="js-sign-detail hidden" data-sign-content="libra">
+      <h3>Libra ♎</h3>
+      <p>September 23 – October 23</p>
+      <p>Diplomatic, gracious, and fair-minded. Values balance.</p>
+    </div>
+    <div class="js-sign-detail hidden" data-sign-content="scorpio">
+      <h3>Scorpio ♏</h3>
+      <p>October 24 – November 21</p>
+      <p>Resourceful, powerful, and brave. Uses emotional energy for strategy.</p>
+    </div>
+    <div class="js-sign-detail hidden" data-sign-content="sagittarius">
+      <h3>Sagittarius ♐</h3>
+      <p>November 22 – December 21</p>
+      <p>Optimistic, adventurous, and always on a quest for knowledge.</p>
+    </div>
+    <div class="js-sign-detail hidden" data-sign-content="capricorn">
+      <h3>Capricorn ♑</h3>
+      <p>December 22 – January 19</p>
+      <p>Disciplined, responsible, and self-controlled. The most determined sign.</p>
+    </div>
+    <div class="js-sign-detail hidden" data-sign-content="aquarius">
+      <h3>Aquarius ♒</h3>
+      <p>January 20 – February 18</p>
+      <p>Progressive, independent, and humanitarian. Wants to change the world.</p>
+    </div>
+    <div class="js-sign-detail hidden" data-sign-content="pisces">
+      <h3>Pisces ♓</h3>
+      <p>February 19 – March 20</p>
+      <p>Compassionate, artistic, and intuitive. The most empathetic sign.</p>
+    </div>
+
+    
+
+
+<div class="js-form-result hidden modal-overlay">
+<div class="modal-box">
+  <button class="js-result-close modal-close">&times;</button>
+  <p class="js-result-text"></p>
+  <p class="js-result-bio"></p>
+</div>
 </div>
 
+  </main>
+
+  <!-- ============================================ -->
+  <!-- HELP MODAL                                   -->
+  <!-- ============================================ -->
+  <!--
+    REQUIREMENTS:
+    - A help section or modal that explains how the app works
+    - Starts hidden, opens when the Help button is clicked
+  -->
+  <div class="js-help-modal hidden modal-overlay">
+    <div class="modal-box">
+      <button class="js-help-close modal-close">&times;</button>
+     
+      <h2>How to Use This App</h2>
+      <ol>
+        <li>Enter your name and birthday in the form, then click "Find My Sign"</li>
+        <li>Or click any zodiac symbol below to see that sign's information</li>
+        <li>You can enter a new date anytime — no need to reload the page</li>
+      </ol>
+      <p>Your name will be saved so you don't have to type it again next time!</p>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- AUDIO ELEMENT                                -->
+  <!-- ============================================ -->
+  <!--
+    REQUIREMENT: Each sign plays a different sound.
+    Use one shared <audio> element and swap the src.
+    See demo 05-soundboard for the pattern.
+  -->
+  <audio class="js-audio-player"></audio>
+
+  <!-- Local storage clear button -->
+  <footer>
+    <button class="js-clear-storage">Clear Saved Data</button>
+  </footer>
+
+  <script src="app.js"></script>
 </body>
+
 </html>

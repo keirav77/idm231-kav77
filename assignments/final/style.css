@@ -1,74 +1,230 @@
 :root {
     --primary-color: #1aa541;
-    --font-main:'Hoffman';
-   
+    --font-main: 'Hoffman';
 }
+
 @font-face {
     font-family: 'Hoffman';
     src: url('fonts/Hoffman.ttf') format('truetype'),
          url('fonts/Hoffman.woff2') format('woff2');
-         font-weight: normal;
-         font-style: normal;
-} 
+    font-weight: normal;
+    font-style: normal;
+}
+
 @font-face {
     font-family: 'DMSans';
     src: url('fonts/DMSans-Regular.ttf') format('truetype'),
          url('fonts/DMSans-Regular.woff2') format('woff2'),
-         url('fonts/DMSans-Regular.woff') format('truetype');
-         font-weight: normal;
+         url('fonts/DMSans-Regular.woff') format('woff');
+    font-weight: normal;
     font-style: normal;
+}
+
+
+h1 {
+    font-family: var(--font-main), sans-serif;
+    color: black;
+    text-align: center;
+    margin-top: 50px;
+    background-color: var(--primary-color);
+    padding: 1rem;
+    font-size: 3rem;
+}
+h2{
+    font-family: var(--font-main);
+    color:#1aa541;
+    font-size: 1.9rem
+}
+h3{
+    font-family: 'DMSans';
+    font-sie: 1rem;
+}
+
+#birthday,
+#submit {
+    font: inherit;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    border: 2px solid #000000;
+    margin: 0.5rem;
 }
 body {
     font-family: 'DMSans', sans-serif;
-    background-image:image("images/eagles-game-courtesy-lincoln-financial-field-2200x1237px.jpg");
+    background: linear-gradient(rgba(255, 255, 255, 0.84), rgba(255, 255, 255, 0.84)),
+        url("assets/images/eagles-game-courtesy-lincoln-financial-field-2200x1237px.jpg") center / cover no-repeat fixed;
     color: #000000;
     margin: 0;
     padding: 20px;
-    
-  
-}
-nav-bar {
-    display: flex;
-    align-items: center;
-    justify-content:space-between;
+    min-height: 100vh;
+    text-align: center;
 }
 
-h1 {
-    font-family:'Hoffman';
-    color: var(--primary-color);
-    text-align: center;
-    margin-top: 50px;
-    background-color: #000000;
+/* =============================================================================
+   FINAL STARTER — Base Styles
+   =============================================================================
+   This is a minimal starting point. Replace with your own design!
+   ============================================================================= */
+
+/* Box sizing reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
-.player-image {
-    width: 200px;
-    height: auto;
-    margin: 20px;
-    border-radius: 10px;
-    display: inline-block;
-    margin-left: auto;
-    margin-right: auto;
-    grid-row: auto;
+
+body {
+  font-family: sans-serif;
+  padding: 2rem;
+  max-width: 1280px;
+  margin: 0 auto;
+  line-height: 1.6;
 }
-.background-container {
-    background-size: cover;
-    position:absolute;
-    z-index: 1;
-    padding: 50px;
-    opacity: 25%;
-    overflow: hidden;
+
+/* ---------- Hidden utility class ---------- */
+/* Add .hidden to any element to hide it. Remove .hidden to show it. */
+.hidden {
+  display: none;
+  pointer-events: none;
 }
-.background-conteiner::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(255, 255, 255, 0.5);
-    z-index: -1;
+
+/* ---------- Sign grid ---------- */
+.sign-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin: 1rem 0;
 }
-.content {
-    position: relative;
-    z-index: 1;
+
+.sign-card {
+  padding: 1rem;
+  border: 2px solid #333;
+  background: #f5f5f5;
+  cursor: pointer;
+  font-size: 1rem;
+  min-width: 120px;
+  text-align: center;
+}
+
+.sign-card:hover {
+  background: #333;
+  color: #fff;
+}
+
+/* ---------- Modal ---------- */
+
+/* overlay background */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+   opacity: 0;
+  pointer-events: none;
+}
+
+/* modal box */
+.modal-box 
+  {
+  background: #ffffff;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+  text-align: center;
+  }
+
+/* close button */
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* ---------- Form ---------- */
+form div {
+  margin-bottom: 1rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.25rem;
+  font-weight: bold;
+}
+
+input {
+  padding: 0.5rem;
+  font-size: 1rem;
+  width: 100%;
+  max-width: 300px;
+}
+
+button[type="submit"] {
+  padding: 0.5rem 1.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+/* ---------- Footer ---------- */
+footer {
+  margin-top: 3rem;
+  padding-top: 1rem;
+  border-top: 1px solid #ccc;
+}
+
+
+
+.modal-overlay:not(.hidden) .modal-box {
+  transform: scale(1);
+  opacity: 1;
+}
+.modal-overlay:not(.hidden) {
+  pointer-events: auto;
+  opacity: 1;
+}
+.sign-icon {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+.js-result-bio {
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  color: #333;
+  line-height: 1.4;
+}
+.js-result-text {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+.js-result-image {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+  border: 3px solid #1aa541; 
+}
+.sign-card {
+  background: #ffffff;
+  border: 2px solid #1aa541;
+  border-radius: 12px;
+  padding: 1rem;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.sign-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+  background: #e8f9ee;
 }
