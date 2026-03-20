@@ -37,7 +37,7 @@ h2{
 }
 h3{
     font-family: 'DMSans';
-    font-sie: 1rem;
+    font-size: 1rem;
 }
 
 #birthday,
@@ -59,11 +59,6 @@ body {
     text-align: center;
 }
 
-/* =============================================================================
-   FINAL STARTER — Base Styles
-   =============================================================================
-   This is a minimal starting point. Replace with your own design!
-   ============================================================================= */
 
 /* Box sizing reset */
 *,

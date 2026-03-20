@@ -14,44 +14,13 @@
 </head>
 
 <body>
-  <!--
-    ================================================================
-    FINAL STARTER — Zodiac Sign Application
-    ================================================================
-    This is a STARTING POINT for your final project.
-    It includes all the HTML sections you'll need.
-    You still need to add your own design, styling, and content!
 
-    HOW TO USE THIS:
-    1. Copy this entire 12-final-starter folder into assignments/final/
-    2. Rename or restyle anything you want
-    3. Open scripts/app.js — all your JavaScript goes there
-    4. Follow the TODO comments in app.js to build each feature
-    ================================================================
-  -->
-
-  <!-- ============================================ -->
-  <!-- HEADER                                       -->
-  <!-- ============================================ -->
-  <header>
-    <h1>Zodiac Sign Finder</h1>
-    <p>Enter your birthday or click a sign to learn more.</p>
-
-    <!-- Help button — opens the help modal -->
+ 
     <button class="js-help-button">Help</button>
   </header>
 
   <main>
-    <!-- ============================================ -->
-    <!-- SECTION 1: Birthday Form                     -->
-    <!-- ============================================ -->
-    <!--
-      REQUIREMENTS:
-      - Name field + birth date input
-      - Both fields must be filled before submit (validation)
-      - On submit: calculate zodiac sign and display result
-      - User can re-enter a new date without reloading
-    -->
+    
     <section>
       <h2>Find Your Sign</h2>
       <form class="js-zodiac-form">
@@ -61,11 +30,8 @@
         </div>
         <div>
           <label for="birthdayInput">Your Birthday</label>
-          <!--
-            You can use type="date" (gives a date picker)
-            or use two separate number fields for month and day.
-            type="date" is easier — that's what this starter uses.
-          -->
+       
+        
           <input id="birthdayInput" class="js-date-input" type="date">
         </div>
         <button type="submit">Find My Sign</button>
@@ -75,21 +41,8 @@
       
     </section>
 
-    <!-- ============================================ -->
-    <!-- SECTION 2: Zodiac Sign Symbols (Clickable)   -->
-    <!-- ============================================ -->
-    <!--
-      REQUIREMENTS:
-      - All 12 signs displayed as clickable symbols/icons
-      - Clicking a sign shows that sign's information
-      - Each sign has a unique visual (image, icon, or graphic)
-
-      Each button has:
-      - .js-sign-button — for JS to select all of them
-      - data-sign="aries" — for JS to know which sign was clicked
-      
-      Replace the emoji text with your own images or icons!
-    -->
+   
+    
     <section>
       <h2>Zodiac Signs</h2>
       <div class="sign-grid">
